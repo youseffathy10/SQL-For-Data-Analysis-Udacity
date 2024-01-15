@@ -1,0 +1,38 @@
+--1-  WITH tb1 AS
+--(SELECT name, LEFT(primary_poc, STRPOS(primary_poc, ' ') -1 ) first_name, 
+ --  RIGHT(primary_poc, LENGTH(primary_poc) - STRPOS(primary_poc, ' ')) 		last_name
+--	FROM accounts
+-- )
+-- SELECT first_name,last_name,
+  -- CONCAT(first_name,'.',last_name,'@',name,'.com')
+  -- FROM tb1
+  
+  
+  --1-  WITH tb1 AS
+--(SELECT name, LEFT(primary_poc, STRPOS(primary_poc, ' ') -1 ) first_name, 
+ --  RIGHT(primary_poc, LENGTH(primary_poc) - STRPOS(primary_poc, ' ')) 		last_name
+--	FROM accounts
+-- )
+-- SELECT first_name,last_name,name,
+  -- CONCAT(first_name,'.',last_name,'@',REPLACE(name,' ',''),'.com') AS email
+  -- FROM tb1
+  
+  
+ WITH tb1 AS
+(SELECT name, LEFT(primary_poc, STRPOS(primary_poc, ' ') -1 ) first_name, 
+   RIGHT(primary_poc, LENGTH(primary_poc) - STRPOS(primary_poc, ' ')) last_name
+	FROM accounts
+ ),
+  tb2 AS 
+    (
+     SELECT first_name,last_name,name,
+   CONCAT(first_name,'.',last_name,'@',REPLACE(name,' ',''),'.com') AS email
+  FROM tb1
+      )
+         
+  SELECT first_name,last_name,name company,email, REPLACE(CONCAT(LOWER(LEFT(first_name,1)),LOWER(RIGHT(first_name,1)),LOWER(LEFT(last_name,1)),LOWER(RIGHT(last_name,1)),LENGTH(first_name),LENGTH(last_name),UPPER(name)),' ','') AS password
+ FROM tb2
+  
+  
+  
+  

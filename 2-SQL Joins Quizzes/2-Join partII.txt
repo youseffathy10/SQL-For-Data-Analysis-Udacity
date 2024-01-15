@@ -1,0 +1,13 @@
+SELECT web_events.channel, accounts.primary_poc, web_events.occurred_at, accounts.name
+FROM web_events 
+JOIN accounts
+ON accounts.id = web_events.account_id
+WHERE accounts.name = 'Walmart';
+
+
+SELECT region.name region_name, sales_reps.name sales_name, accounts.name account
+FROM region JOIN sales_reps
+ON region.id = sales_reps.region_id
+JOIN accounts 
+ON sales_reps.id = accounts.sales_rep_id
+ORDER BY accounts.name ASC

@@ -1,0 +1,15 @@
+WITH tb1 AS 
+(SELECT *
+FROM accounts a
+LEFT JOIN orders o
+ON a.id = o.account_id
+
+ ),
+ tbl2 AS (
+ SELECT *,COALESCE(o.id,a.id) new_id,COALESCE(standard_qty,0) new_st_qty,COALESCE(poster_qty,0) new_poster,COALESCE(gloss_qty,0) new_gloss,COALESCE(standard_amt_usd,0) new_st_amt_usd,COALESCE(gloss_amt_usd,0) new_gloss_amt_usd,COALESCE(poster_amt_usd,0) new_poster_amt_usd,COALESCE(total_amt_usd,0) new_total_amt_usd
+ FROM accounts a
+LEFT JOIN orders o
+ON a.id = o.account_id
+)
+ SELECT COUNT(*)
+ FROM tbl2

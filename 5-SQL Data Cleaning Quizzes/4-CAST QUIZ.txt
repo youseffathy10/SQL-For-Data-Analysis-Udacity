@@ -1,0 +1,12 @@
+WITH tb1 AS
+(
+  SELECT date,
+  LEFT(date,2) AS month,
+  SUBSTR(date,4,2) AS day,
+ SUBSTR(date,7,4) AS Year
+FROM sf_crime_data
+LIMIT 10
+  )
+  SELECT date,
+ CAST(YEAR || '-' ||month||'-'||day  AS DATE) AS new_date_format
+  FROM tb1

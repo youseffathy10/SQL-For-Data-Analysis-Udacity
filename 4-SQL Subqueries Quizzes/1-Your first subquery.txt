@@ -1,0 +1,8 @@
+SELECT channel, AVG (event_count) avg_event_count
+FROM
+	(SELECT channel,DATE_TRUNC('day',occurred_at) AS event_time ,COUNT(*) event_count
+	FROM web_events
+	GROUP BY 1,2)SUB
+    GROUP BY 1
+    ORDER BY 2 DESC
+    

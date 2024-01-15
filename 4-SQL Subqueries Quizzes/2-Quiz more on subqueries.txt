@@ -1,0 +1,6 @@
+
+SELECT AVG(standard_qty) avg_st_qty, AVG(gloss_qty) avg_gloss_qty, AVG(poster_qty) avg_poster_qty, SUM(total_amt_usd) Sum_of_total_amt_usd
+FROM orders
+WHERE DATE_TRUNC('month',occurred_at) =
+	(SELECT DATE_TRUNC('month',MIN(occurred_at)) AS first_order
+	FROM orders)

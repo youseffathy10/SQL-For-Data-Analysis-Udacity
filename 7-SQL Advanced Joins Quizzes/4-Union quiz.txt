@@ -1,0 +1,40 @@
+1)
+SELECT * 
+FROM accounts
+
+UNION ALL
+
+SELECT *
+FROM accounts 
+
+2)
+SELECT * 
+FROM accounts
+WHERE name = 'Walmart'
+
+UNION ALL
+
+SELECT *
+FROM accounts 
+WHERE name ='Disney'
+
+
+
+
+
+3)
+WITH double_accounts AS
+(
+  SELECT*
+  FROM accounts
+  
+  UNION ALL
+  
+  SELECT *
+  FROM accounts
+  )
+  
+  
+  SELECT d.name,COUNT(*)
+  FROM double_accounts d
+  GROUP BY 1

@@ -1,0 +1,12 @@
+--Use the accounts table to create first and last name columns that hold the first and last names for the primary_poc.
+--SELECT primary_poc ,
+--LEFT(primary_poc,STRPOS(primary_poc,' ')-1) AS first,
+--SUBSTR(primary_poc,STRPOS(primary_poc,' '),100) AS last
+--FROM accounts
+
+
+--Now see if you can do the same thing for every rep name in the sales_reps table. Again provide first and last name columns.
+SELECT name,
+LEFT(name,STRPOS(name,' ')-1) AS first,
+ SUBSTR(name,STRPOS(name,' '),100) AS last
+FROM sales_reps
